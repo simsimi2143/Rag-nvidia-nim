@@ -22,8 +22,8 @@ Este proyecto implementa un pipeline completo para:
 
 1. Clonar el repositorio:
 ```bash
-git clone [repo-url]
-cd [repo-name]
+git clone [https://github.com/simsimi2143/Rag-nvidia-nim.git]
+cd [Rag-nvidia-nim]
 ```
 
 2. Instalar dependencias:
@@ -36,13 +36,56 @@ pip install -r requirements.txt
 export NVIDIA_API_KEY="tu_api_key_aquí"
 ```
 
-## Uso Básico
+Aquí tienes una guía de uso básico clara y profesional para tu `README.md`, adaptada a tu estructura actual:
 
-1. Colocar tu PDF en la carpeta `/data`
-2. Ejecutar el sistema:
-```python
-python rag_pipeline.py --pdf_path /data/tu_documento.pdf
+---
+
+## 🚀 Uso Básico
+
+### Requisitos previos
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+pip install -r requirements.txt
 ```
+
+### 1. Configuración inicial
+1. Coloca tu PDF en la carpeta `/data` (recomendado renombrarlo sin espacios):
+   ```bash
+   mv "tu_documento.pdf" data/Trabajo_de_Titulo_FINAL.pdf
+   ```
+
+2. Configura tus credenciales:
+   ```bash
+   cp config/api_config_sample.py config/api_config.py
+   ```
+   Edita el archivo con tu API key de NVIDIA:
+   ```python
+   NVIDIA_API_KEY = "tu_api_key_aqui"
+   ```
+
+### 2. Ejecución
+Para usar el asistente RAG:
+
+#### Opción A: Desde Jupyter Notebook
+```bash
+jupyter notebook
+```
+Abre `notebooks/Ready_tensor_agentic.ipynb` y ejecuta todas las celdas
+
+#### Opción B: Directo desde Python (si implementas `rag_pipeline.py`)
+```bash
+python rag_pipeline.py  # Usará automáticamente el PDF en /data
+```
+
+
+### 📌 Notas importantes
+- El PDF debe tener texto extraíble (no escaneos/imágenes)
+- Para cambiar de documento, edita `PDF_PATH` en `config/api_config.py`
+- Primer ejecución puede tardar (genera embeddings)
+
+
 
 3. Interactuar con el asistente:
 ```
@@ -54,14 +97,18 @@ python rag_pipeline.py --pdf_path /data/tu_documento.pdf
 ## Estructura del Código
 
 ```
-/project
-├── rag_pipeline.py          # Pipeline principal
-├── config.py                # Configuraciones
-├── utils/                   # Utilidades
-│   ├── text_processing.py   # Procesamiento de texto
-│   └── error_handling.py    # Manejo de errores
-├── data/                    # Documentos PDF
-└── README.md                # Este archivo
+rag-nvidia-nim/
+├── config/
+│   ├── api_config_sample.py   # Renombrar a api_config.py después
+├── data/
+│   └── Trabajo_de_Titulo_FINAL.pdf  # Sin espacios (recomendado)
+│   └── readme.md
+├── notebooks/
+│   └── Ready_tensor_agentic.ipynb
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ## Configuración Avanzada
