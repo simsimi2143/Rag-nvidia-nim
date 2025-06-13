@@ -1,0 +1,6 @@
+langchain_community
+langchain_nvidia_ai_endpoints
+langchain-text-splitters
+faiss-cpu
+tiktoken
+python-dotenv
